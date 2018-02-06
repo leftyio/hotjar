@@ -33,10 +33,8 @@ Future<Null> hj(String action, [arguments]) async {
   _hj(action, arguments);
 }
 
-Future<ScriptElement> loadHotjar(String siteId) {
-  _loaded ??= loadInlineScript(_hjScript(siteId), _scriptId);
-  return _loaded;
-}
+Future<ScriptElement> loadHotjar(String siteId) =>
+    loadInlineScript(_hjScript(siteId), _scriptId);
 
 void tagRecording(List<String> tags) {
   hj('tagRecording', tags);

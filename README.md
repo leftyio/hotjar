@@ -26,7 +26,7 @@ main() {
 import "package:hotjar/hotjar.dart";
 
 main() async {
-  await loadHotjar("SITE_ID");
+  loadHotjar("SITE_ID");
 
   hj("trigger", "my-poll");
   hj("tagRecording",  ["tag1", "tag2"]);
