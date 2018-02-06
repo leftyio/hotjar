@@ -22,6 +22,7 @@ main() {
 
 ### Hotjar manual install
 
+```dart
 import "package:hotjar/hotjar.dart";
 
 main() async {
@@ -35,3 +36,4 @@ main() async {
   trigger("my-poll");
   tagRecording(["tag1", "tag2"]);
 }
+```
