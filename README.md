@@ -1,6 +1,6 @@
 # hotjar
 
-Hotjar Javascript interop for dart
+Javascript interop for Hotjar
 
 ## Usage
 

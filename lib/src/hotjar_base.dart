@@ -27,19 +27,28 @@ const _scriptId = "jssdk-hj";
 
 Future<ScriptElement> _loaded;
 
-Future<Null> hj(String action, [arguments]) async {
+/// Hotjar main function
+/// used by
+///   - [tagRecording]
+///   - [trigger]
+Future<void> hj(String action, [arguments]) async {
   _loaded ??= loadInlineScript(_hJBaseScript, _scriptId);
   await _loaded;
   _hj(action, arguments);
 }
 
+/// Load hotjar javascript
 Future<ScriptElement> loadHotjar(String siteId) =>
     loadInlineScript(_hjScript(siteId), _scriptId);
 
+/// Hotjar tag recording
+/// https://help.hotjar.com/hc/en-us/articles/115011819488-How-to-Tag-your-Hotjar-Recordings
 void tagRecording(List<String> tags) {
   hj('tagRecording', tags);
 }
 
+/// Hotjar trigger
+/// https://help.hotjar.com/hc/en-us/articles/115011867948-Using-JavaScript-to-Trigger-Heatmaps
 void trigger(String name) {
   hj('trigger', name);
 }
