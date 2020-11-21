@@ -1,6 +1,6 @@
 name: hotjar
 description: Javascript interop for Hotjar
-version: 0.0.2+1
+version: 0.0.3
 homepage: https://github.com/leftyio/hotjar
 author: Hadrien Lejard <hadrien.lejard@gmail.com>
 
@@ -9,8 +9,10 @@ environment:
 
 dependencies:
   js: ^0.6.1
-  dart_browser_loader: ^0.0.4
+  dart_browser_loader: ^0.0.6
 
 dev_dependencies:
   test: ^1.3.0
   pedantic: ^1.8.0
+  build_runner: '>=1.6.2 <2.0.0'
+  build_web_compilers: '>=1.2.0 <3.0.0'

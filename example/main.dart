@@ -1,8 +1,11 @@
 import "package:hotjar/hotjar.dart" as hotjar;
 
 main() async {
-  await hotjar.loadHotjar('SITE_ID');
+  hotjar.trigger("my-poll-1");
+  hotjar.tagRecording(["tag1"]);
 
-  hotjar.trigger("my-poll");
-  hotjar.tagRecording(["tag1", "tag2"]);
+  // await hotjar.loadHotjar('SITE_ID');
+
+  // hotjar.trigger("my-poll-2");
+  // hotjar.tagRecording(["tag2"]);
 }

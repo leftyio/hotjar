@@ -1,13 +1,11 @@
 @JS()
 library hotjar.base;
 
-import 'dart:async';
-import "dart:html";
 import 'package:js/js.dart';
 import 'package:dart_browser_loader/dart_browser_loader.dart';
 
 @JS("hj")
-external void _hj(String action, [List<String> arguments]);
+external void _hj(String action, [arguments]);
 
 String _hjScript(String siteId) => '''
 (function(h,o,t,j,a,r){
@@ -23,23 +21,24 @@ String _hjScript(String siteId) => '''
 const _hJBaseScript =
     "window.hj=window.hj||function(){(hj.q=hj.q||[]).push(arguments)};";
 
-const _scriptId = "jssdk-hj";
-
-Future<ScriptElement> _loaded;
-
 /// Hotjar main function
 /// used by
 ///   - [tagRecording]
 ///   - [trigger]
-Future<void> hj(String action, [arguments]) async {
-  _loaded ??= loadInlineScript(_hJBaseScript, _scriptId);
-  await _loaded;
+void hj(String action, [arguments]) {
+  eval(_hJBaseScript);
   _hj(action, arguments);
 }
 
+bool _loaded = false;
+
 /// Load hotjar javascript
-Future<ScriptElement> loadHotjar(String siteId) =>
-    loadInlineScript(_hjScript(siteId), _scriptId);
+loadHotjar(String siteId) {
+  if (_loaded == false) {
+    eval(_hjScript(siteId));
+    _loaded = true;
+  }
+}
 
 /// Hotjar tag recording
 /// https://help.hotjar.com/hc/en-us/articles/115011819488-How-to-Tag-your-Hotjar-Recordings

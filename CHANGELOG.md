@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.0.3
+
+- Fix loadHotjar
+
 ## 0.0.2
 
 - Dart 2 stable
