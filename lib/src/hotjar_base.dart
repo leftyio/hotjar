@@ -4,7 +4,7 @@ library hotjar.base;
 import 'package:js/js.dart';
 import 'package:dart_browser_loader/dart_browser_loader.dart';
 
-@JS("hj")
+@JS('hj')
 external void _hj(String action, [arguments]);
 
 String _hjScript(String siteId) => '''
@@ -19,7 +19,7 @@ String _hjScript(String siteId) => '''
 ''';
 
 const _hJBaseScript =
-    "window.hj=window.hj||function(){(hj.q=hj.q||[]).push(arguments)};";
+    'window.hj=window.hj||function(){(hj.q=hj.q||[]).push(arguments)};';
 
 /// Hotjar main function
 /// used by
@@ -33,7 +33,7 @@ void hj(String action, [arguments]) {
 bool _loaded = false;
 
 /// Load hotjar javascript
-loadHotjar(String siteId) {
+void loadHotjar(String siteId) {
   if (_loaded == false) {
     eval(_hjScript(siteId));
     _loaded = true;

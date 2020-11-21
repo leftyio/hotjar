@@ -1,8 +1,8 @@
-import "package:hotjar/hotjar.dart" as hotjar;
+import 'package:hotjar/hotjar.dart' as hotjar;
 
-main() async {
-  hotjar.trigger("my-poll-1");
-  hotjar.tagRecording(["tag1"]);
+Future<void> main() async {
+  hotjar.trigger('my-poll-1');
+  hotjar.tagRecording(['tag1']);
 
   // await hotjar.loadHotjar('SITE_ID');
 
